@@ -1,10 +1,25 @@
 import os
+import sys
 import asyncio
 from datetime import datetime
 import shutil
-from document_utilities.embeddings import embed_chunks_using_openAI
-from document_loaders.load_pdf import load_pdf, load_json
-from document_utilities.splitter import chunk_pdf_document
+import json
+
+# document 
+from .document_loaders.load_pdf import load_pdf, load_json
+from .document_utilities.embeddings import embed_chunks_using_openAI
+from .document_utilities.splitter import chunk_pdf_document
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# vector store
+from vector_store.hello import say_hello
+#from src.vector_store.hello import say_hello
+#from document_utilities.embeddings import embed_chunks_using_openAI
+#from document_loaders.load_pdf import load_pdf, load_json
+#from document_utilities.splitter import chunk_pdf_document
+
+# vector store
+#from vector_store.vector_processing_service import VectorProcessingService
+
 
 class DocumentProcessingService:
     def __init__(self, config: dict):
@@ -23,6 +38,8 @@ class DocumentProcessingService:
         self.embedding_model = config.get("model_options", {}).get("embedding_model", "text-embedding-3-small")
 
     async def intake_documents(self):
+        # testing hello
+        say_hello()
         # Load PDFs and JSON files
         await self.process_pdf_files()
         await self.process_json_files()
@@ -76,47 +93,31 @@ class DocumentProcessingService:
         )
 
 
+# Issue running from app.py - need to fix
+def load_config():
+    # Get the directory of the current file
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+
+    # Construct the path to config.json
+    config_path = os.path.join(current_dir, 'config.json')
+
+    # Open and load the JSON file
+    with open(config_path, 'r') as file:
+        config = json.load(file)
+    
+    return config
+    
+
+async def main():    
+    config = load_config()
+     
+    document_processing_service = DocumentProcessingService(config)
+    await document_processing_service.intake_documents()
+
+    #vector_processing_service = VectorProcessingService(config)
+    #vector_processing_service.say_hello()
+
+
+
 if __name__ == "__main__":
-    # Example config
-    config = {
-        "document_loader": {
-            "chunking": {
-                "chunk_size": 1000,
-                "chunk_overlap": 200
-            },
-            "file_processing_locations": {
-                "pdf": [
-                    {
-                        "landing_path": "C:\\_mlops\\RAG_Playground\\rag_lab\\documents\\landing\\pdfs\\",
-                        "processed_path": "C:\\_mlops\\RAG_Playground\\rag_lab\\documents\\processed\\pdfs\\",
-                        "metadata": {
-                            "source": "example_source",
-                            "category": "research"
-                        }
-                    }
-                ],
-                "json": [
-                    {
-                        "landing_path": "C:\\_mlops\\RAG_Playground\\rag_lab\\documents\\landing\\json\\",
-                        "processed_path": "C:\\_mlops\\RAG_Playground\\rag_lab\\documents\\processed\\json\\",
-                        "metadata": {
-                            "source": "example_source",
-                            "category": "research"
-                        }
-                    }
-                ]
-            }
-        },
-        "model_options": {        
-            "embedding_model": "text-embedding-3-small",
-            "llm_model": "gpt-4o",
-            "llm_temperature": 0.0,
-            "llm_api_token_name": "OPENAI_API_KEY"
-        }
-    }
-
-    # Create the service instance
-    service = DocumentProcessingService(config)
-
-    # Run the async function directly
-    asyncio.run(service.intake_documents())
+    asyncio.run(main())

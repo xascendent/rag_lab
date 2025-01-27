@@ -10,5 +10,6 @@ dependencies = [
     "pytest",
     "pytest-asyncio",
     "langchain_openai",
-    "load_dotenv"
+    "load_dotenv",
+    "faiss-cpu"
 ]
