@@ -1,0 +1,54 @@
+{
+    "Visits": [
+      {
+        "MRN": "123456789",
+        "VisitId": "V001",
+        "CurrentMedications": [
+          "Metformin",
+          "Lisinopril"
+        ],
+        "PrescribedMedications": [
+          "Atorvastatin",
+          "Amlodipine"
+        ],
+        "VisitNarrative": "Patient presented with elevated blood pressure and reports mild dizziness. Current medications include Metformin for diabetes and Lisinopril for hypertension. Prescribed Atorvastatin for cholesterol and Amlodipine to manage hypertension."
+      },
+      {
+        "MRN": "987654321",
+        "VisitId": "V002",
+        "CurrentMedications": [
+          "Albuterol",
+          "Omeprazole"
+        ],
+        "PrescribedMedications": [
+          "Montelukast",
+          "Fluticasone"
+        ],
+        "VisitNarrative": "Patient reported shortness of breath and frequent heartburn. Current medications include Albuterol for asthma and Omeprazole for acid reflux. Prescribed Montelukast to prevent asthma symptoms and Fluticasone as a maintenance inhaler."
+      },
+      {
+        "MRN": "456789123",
+        "VisitId": "V003",
+        "CurrentMedications": [
+          "Levothyroxine"
+        ],
+        "PrescribedMedications": [
+          "Hydrochlorothiazide",
+          "Losartan"
+        ],
+        "VisitNarrative": "Patient presented with swelling in the lower extremities and mild fatigue. Currently taking Levothyroxine for hypothyroidism. Prescribed Hydrochlorothiazide for fluid retention and Losartan to address hypertension."
+      },
+      {
+        "MRN": "654321987",
+        "VisitId": "V004",
+        "CurrentMedications": [
+          "Warfarin"
+        ],
+        "PrescribedMedications": [
+          "Dabigatran"
+        ],
+        "VisitNarrative": "Patient presented for routine follow-up of anticoagulation therapy. Currently taking Warfarin. Due to difficulties managing INR levels, prescribed Dabigatran as an alternative."
+      }
+    ]
+  }
+  

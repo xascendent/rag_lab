@@ -1,6 +1,6 @@
 import os
 import pytest
-from src.document_processing.load_pdf import load_pdf
+from src.document_processing.document_loaders.load_pdf import load_pdf
 
 @pytest.mark.asyncio
 async def test_load_pdf():

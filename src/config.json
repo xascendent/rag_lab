@@ -1,0 +1,36 @@
+{
+    "document_loader": {
+        "chunking": {
+            "chunk_size": 1000,
+            "chunk_overlap": 200
+        },
+        "file_processing_locations": {
+            "pdf": [
+                {
+                    "landing_path": "C:\\_mlops\\RAG_Playground\\rag_lab\\documents\\landing\\pdfs\\",
+                    "processed_path": "C:\\_mlops\\RAG_Playground\\rag_lab\\documents\\processed\\pdfs\\",
+                    "metadata": {
+                        "source": "example_source",
+                        "category": "research"
+                    }
+                }
+            ],
+            "json": [
+                {
+                    "landing_path": "C:\\_mlops\\RAG_Playground\\rag_lab\\documents\\landing\\json\\",
+                    "processed_path": "C:\\_mlops\\RAG_Playground\\rag_lab\\documents\\processed\\json\\",
+                    "metadata": {
+                        "source": "example_source",
+                        "category": "research"
+                    }
+                }
+            ]
+        }
+    },
+    "model_options": {        
+        "embedding_model": "text-embedding-3-small",
+        "llm_model": "gpt-4o",
+        "llm_temperature": 0.0,
+        "llm_api_token_name": "OPENAI_API_KEY"
+    }
+}

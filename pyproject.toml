@@ -1,0 +1,14 @@
+[project]
+name = "rag_lab"
+version = "0.1.0"
+description = "Creating a RAG Lab for learing"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [ 
+    "pypdf",
+    "langchain_community",
+    "pytest",
+    "pytest-asyncio",
+    "langchain_openai",
+    "load_dotenv"
+]
